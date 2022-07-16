@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Empleados</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link active" aria-current="page"
+						th:href="@{empleados}">Empleados</a> <a class="nav-link active"
+						aria-current="page" th:href="@{empleado/nuevo}">Empleado Nuevo</a>
+					<!--   <a class="nav-link" href="#">Pricing</a>-->
+					<!-- <a class="nav-link disabled">Disabled</a>-->
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<h1>Lista de Estudiantes</h1>
+			<div class="row">
+				<div class " col-lg-3">
+					<a th:href="@{/empleado/nuevo}" class ="btn btn-primary btn-sm mb3">Agregar Empleado</a>
+				</div>
+			
+		 </div>
+		
+		
+		
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Telefono</th>
+						<th>Email</th>
+						<th>acciones
+						<th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="empleado: ${empleado}">
+						<td th:text=${empleado.nombre}>Nombre</td>
+						<td th:text=${empleado.apellido}>Apellido</td>
+						<td th:text=${empleado.telefono}>Telefono</td>
+						<td th:text=${empleado.email}>Email</td>
+						<td><a
+							th:href="@{/empleado/modificar/{id}(id=${empleado.id})}"
+							class="btn btn-info">Editar</a> <a
+							th:href="@{/empleado/eliminar/{id}(id=${empleado.id})}"
+							class="btn btn-danger">Eliminar</a></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+</body>
+</html>
